@@ -1,0 +1,50 @@
+
+@base=https://johna69-simplest-deployment.cfapps.us10-001.hana.ondemand.com
+
+# Test Server
+###
+#
+GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester
+
+###
+# $metadata
+GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/$metadata
+
+###
+# Testlog   
+GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog
+
+###
+# Test Action
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/odata/v4/catalog",
+  "task": "northbreeze-selectproduct"
+}
+
+
+
+
+# Testee
+###
+# Access the base URL
+GET {{base}}
+
+###
+# Service Document
+GET {{base}}/odata/v4/catalog
+
+###
+# Metadata
+GET {{base}}/odata/v4/catalog/$metadata
+
+###
+# Books
+GET {{base}}/odata/v4/catalog/Books
+
+# Local
+### 
+# Test Ping
+GET http://localhost:4004/odata/v4/basic/ping()
+
