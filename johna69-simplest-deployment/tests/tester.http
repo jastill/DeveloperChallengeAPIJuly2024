@@ -11,8 +11,12 @@ GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester
 GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/$metadata
 
 ###
-# Testlog   
+# Testlog all users  
 GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog
+
+###
+# Testlog my users  
+GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog?$filter=communityid eq 'johna69'
 
 ###
 # Test Task 1
@@ -25,7 +29,16 @@ content-type: application/json
   "task": "basic-ping"
 }
 
-
+###
+# Test Task 2
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/basic",
+  "task": "basic-hello"
+}
 
 
 # Testee
@@ -49,8 +62,16 @@ GET {{base}}/odata/v4/catalog/Books
 # Test Ping
 GET {{base}}/basic/ping()
 
+### 
+# Test hello
+GET {{base}}/basic/hello(to='Zaphod')
+
 # Local
 ### 
 # Test Ping
 GET http://localhost:4004/basic/ping()
+
+### 
+# Test Hello
+GET http://localhost:4004/basic/hello(to='Zaphod')
 
