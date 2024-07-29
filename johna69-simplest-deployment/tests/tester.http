@@ -40,6 +40,17 @@ content-type: application/json
   "task": "basic-hello"
 }
 
+###
+# Test Task 3
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/basic",
+  "task": "basic-sum"
+}
+
 
 # Testee
 ###
@@ -74,4 +85,8 @@ GET http://localhost:4004/basic/ping()
 ### 
 # Test Hello
 GET http://localhost:4004/basic/hello(to='Zaphod')
+
+### 
+# Test Sum
+GET http://localhost:4004/basic/sum(a=1,b=4)
 
