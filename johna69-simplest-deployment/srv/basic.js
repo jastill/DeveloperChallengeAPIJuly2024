@@ -1,3 +1,3 @@
-module.exports = function basic(){
-    this.on('ping', () => "pong")
+module.exports = class basic extends cds.ApplicationService {
+    ping() {return "pong"}
 }

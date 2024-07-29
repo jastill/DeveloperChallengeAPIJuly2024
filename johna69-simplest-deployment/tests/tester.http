@@ -15,12 +15,14 @@ GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/$me
 GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog
 
 ###
-# Test Action
+# Test Task 1
 POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
 content-type: application/json
+  
+{
   "communityid": "johna69",
-  "serviceurl": "{{base}}/odata/v4/catalog",
-  "task": "northbreeze-selectproduct"
+  "serviceurl": "{{base}}/basic",
+  "task": "basic-ping"
 }
 
 
@@ -43,8 +45,12 @@ GET {{base}}/odata/v4/catalog/$metadata
 # Books
 GET {{base}}/odata/v4/catalog/Books
 
+### 
+# Test Ping
+GET {{base}}/basic/ping()
+
 # Local
 ### 
 # Test Ping
-GET http://localhost:4004/odata/v4/basic/ping()
+GET http://localhost:4004/basic/ping()
 
