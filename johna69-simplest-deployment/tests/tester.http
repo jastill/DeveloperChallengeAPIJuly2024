@@ -1,5 +1,6 @@
 
 @base=https://johna69-simplest-deployment.cfapps.us10-001.hana.ondemand.com
+@grok=https://0a5d-165-1-200-70.ngrok-free.app
 
 # Test Server
 ###
@@ -84,6 +85,17 @@ content-type: application/json
   "task": "plain-highestValue"
 }
 
+###
+# Test Task 7
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{grok}}/odata/v4/northbreeze",
+  "task": "northbreeze-productInfo"
+}
+
 
 # Testee
 ###
@@ -121,6 +133,10 @@ Content-Type: application/json
 
 [1,2,3,-4,-9,5]
 
+### 
+# Product Info
+GET {{base}}/odata/v4/northbreeze/productInfo(id=11)
+
 # Local
 
 ###
@@ -150,3 +166,12 @@ POST http://localhost:4004/rest/plain/highestValue
 Content-Type: application/json
 
 [1,2,3,-4,-9,5]
+
+
+### 
+# Product Info
+GET http://localhost:4004/odata/v4/northbreeze/productInfo(id=11)
+
+### 
+# Product Info
+GET {{grok}}/odata/v4/northbreeze/productInfo(id=11)
