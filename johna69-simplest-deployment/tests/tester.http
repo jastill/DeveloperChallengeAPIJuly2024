@@ -96,6 +96,28 @@ content-type: application/json
   "task": "northbreeze-productInfo"
 }
 
+###
+# Test Task 8
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{grok}}/odata/v4/northbreeze",
+  "task": "northbreeze-Products"
+}
+
+###
+# Test Task 9
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{grok}}/odata/v4/northbreeze",
+  "task": "northbreeze-selectProduct"
+}
+
 
 # Testee
 ###
@@ -175,3 +197,17 @@ GET http://localhost:4004/odata/v4/northbreeze/productInfo(id=11)
 ### 
 # Product Info
 GET {{grok}}/odata/v4/northbreeze/productInfo(id=11)
+
+### 
+# Test selectProduct
+POST http://localhost:4004/odata/v4/northbreeze/selectProduct
+Content-Type: application/json
+
+{"communityid":"johna69"}
+
+### 
+# Test selectProduct
+POST {{grok}}/odata/v4/northbreeze/selectProduct
+Content-Type: application/json
+
+{"communityid":"johna69"}

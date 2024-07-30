@@ -6,6 +6,22 @@ class northbreeze extends cds.ApplicationService {
         const { Products } = cds.entities('northwind')
 
         log.info('Service is initializing')
+        this.on('selectProduct', async req => {
+            log.info('ID:',req.data.communityid)
+
+            const productCount = await SELECT.one.from(Products).columns('count(*) as count')
+
+            log.info('Product:',productCount.count)
+
+            const communityid = req.data.communityid
+            const sum = [...communityid].map(b => b.toLowerCase().charCodeAt()).reduce( (a,b) => a + b )
+            const value = (sum % productCount.count) +1
+
+            const productName = await SELECT.one.from(Products).columns('ProductName').where({ProductID: value})
+
+            return productName.ProductName
+         })
+
         this.on('productInfo', async req => {
             log.info('ID:',req.data.id)
 

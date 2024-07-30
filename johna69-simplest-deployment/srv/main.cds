@@ -7,5 +7,6 @@ service northbreeze {
     entity Categories as projection on northwind.Categories;
 
     function productInfo(id:Integer) returns String;
+    action selectProduct(communityid:String) returns String;
 
 }
