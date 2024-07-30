@@ -12,6 +12,10 @@ GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester
 GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/$metadata
 
 ###
+# Testlog all users 
+GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog?$filter=task eq 'northbreeze-stockvalue'&$count=true
+
+###
 # Testlog all users  
 GET https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/Testlog
 
@@ -118,6 +122,27 @@ content-type: application/json
   "task": "northbreeze-selectProduct"
 }
 
+###
+# Test Task 10
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{grok}}/odata/v4/northbreeze",
+  "task": "northbreeze-totalProducts"
+}
+
+###
+# Test Task 11
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{grok}}/odata/v4/northbreeze",
+  "task": "northbreeze-stockValue"
+}
 
 # Testee
 ###
@@ -211,3 +236,11 @@ POST {{grok}}/odata/v4/northbreeze/selectProduct
 Content-Type: application/json
 
 {"communityid":"johna69"}
+
+### 
+# Stock Value
+GET http://localhost:4004/odata/v4/northbreeze/Products/11/stockValue()
+
+### 
+# Stock Value
+GET {{grok}}/odata/v4/northbreeze/Products/42/stockValue()

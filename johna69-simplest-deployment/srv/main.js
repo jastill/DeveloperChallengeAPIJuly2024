@@ -30,6 +30,25 @@ class northbreeze extends cds.ApplicationService {
             return product.ProductName + ' by ' + product.Supplier_CompanyName
          })
 
+        this.on('stockValue', async (req) => {
+            const [...values] = req.params
+
+
+//Convert the  array into an o with key and value pairs                        // https://stackoverflow.com/questions/4215737/how-to-convert-an-array-into-an-object
+            const params = values.reduce(function(result, item) {
+                var key = Object.keys(item)[0]; //first property: a, b, c
+                result[key] = item[key];
+                return result;
+              }, {});
+            log.info('Values:',values)
+            log.info('Params:',params)
+
+            const product = await SELECT.one.from(Products).columns('UnitsInStock','UnitPrice').where({ProductID: params.ProductID});
+            log.info('Product:',product)
+
+            return product.UnitsInStock * product.UnitPrice
+        })
+
         return super.init()
     }    
 }
