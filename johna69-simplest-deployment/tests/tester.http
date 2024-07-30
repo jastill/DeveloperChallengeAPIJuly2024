@@ -51,6 +51,39 @@ content-type: application/json
   "task": "basic-sum"
 }
 
+###
+# Test Task 4
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/rest/plain",
+  "task": "plain-theAnswer"
+}
+
+###
+# Test Task 5
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/rest/plain",
+  "task": "plain-serviceDocument"
+}
+
+###
+# Test Task 6
+POST https://developer-challenge-2024-07.cfapps.eu10.hana.ondemand.com/tester/testServer
+content-type: application/json
+  
+{
+  "communityid": "johna69",
+  "serviceurl": "{{base}}/rest/plain",
+  "task": "plain-highestValue"
+}
+
 
 # Testee
 ###
@@ -77,7 +110,23 @@ GET {{base}}/basic/ping()
 # Test hello
 GET {{base}}/basic/hello(to='Zaphod')
 
+### 
+# Test theAnswer
+GET {{base}}/rest/plain/theAnswer
+
+### 
+# Test highestValue
+POST {{base}}/rest/plain/highestValue
+Content-Type: application/json
+
+[1,2,3,-4,-9,5]
+
 # Local
+
+###
+#
+GET http://localhost:4004/
+
 ### 
 # Test Ping
 GET http://localhost:4004/basic/ping()
@@ -86,7 +135,18 @@ GET http://localhost:4004/basic/ping()
 # Test Hello
 GET http://localhost:4004/basic/hello(to='Zaphod')
 
+
 ### 
 # Test Sum
 GET http://localhost:4004/basic/sum(a=1,b=4)
 
+### 
+# Test theAnwer
+GET http://localhost:4004/rest/plain/theAnswer
+
+### 
+# Test highestValue
+POST http://localhost:4004/rest/plain/highestValue
+Content-Type: application/json
+
+[1,2,3,-4,-9,5]
