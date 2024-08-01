@@ -30,6 +30,7 @@ class northbreeze extends cds.ApplicationService {
             return product.ProductName + ' by ' + product.Supplier_CompanyName
          })
 
+        // https://community.sap.com/t5/application-development-discussions/task-11-using-implicit-parameters-with-a-bound-function-july-developer/m-p/13778302/emcs_t/S2h8ZW1haWx8dG9waWNfc3Vic2NyaXB0aW9ufExaOVFBMFRQNUEzVTZKfDEzNzc4MzAyfFNVQlNDUklQVElPTlN8aEs
         this.on('stockValue', async (req) => {
             const [...values] = req.params
 

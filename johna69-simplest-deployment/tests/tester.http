@@ -1,6 +1,6 @@
 
 @base=https://johna69-simplest-deployment.cfapps.us10-001.hana.ondemand.com
-@grok=https://0a5d-165-1-200-70.ngrok-free.app
+@grok=https://ade4-199-87-112-12.ngrok-free.app
 
 # Test Server
 ###
@@ -239,6 +239,7 @@ Content-Type: application/json
 
 ### 
 # Stock Value
+# curl --url http://localhost:4004/odata/v4/northbreeze/Products/11/stockValue()
 GET http://localhost:4004/odata/v4/northbreeze/Products/11/stockValue()
 
 ### 
